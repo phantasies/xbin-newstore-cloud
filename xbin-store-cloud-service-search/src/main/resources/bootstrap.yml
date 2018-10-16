@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: xbin-store-cloud-service-search
+  zipkin:
+    base-url: ${spring.zipkin.base-url}
+  sleuth:
+    sampler:
+      percentage: 1.0
+  data:
+    solr:
+      host: http://192.168.100.222:8080/solr/#/collection1
+      #zkHost:
+      repositories:
+        enabled: false
+
+security.basic.enabled: false
+
+server:
+  port: ${server.port}
+
+management:
+  security:
+    enabled: false
+
+eureka:
+  instance:
+    status-page-url: ${eureka.instance.status-page-url}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.client.service-url.defaultZone}

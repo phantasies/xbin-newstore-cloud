@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.binux.mapper.TbHotWordsMapper" >
+  <resultMap id="BaseResultMap" type="cn.binux.pojo.TbHotWords" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="search" property="search" jdbcType="TINYINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, category, name,
+    url, search, created,
+    updated
+    from tb_hot_words
+    where id = #{id}
+  </select>
+
+  <insert id="insert" parameterType="cn.binux.pojo.TbHotWords" >
+    insert into tb_hot_words (id, category, name,
+      url, search, created, 
+      updated)
+    values (#{id}, #{category}, #{name},
+      #{url}, #{search}, #{created},
+      #{updated})
+  </insert>
+
+  <update id="update" parameterType="cn.binux.pojo.TbHotWords" >
+    update tb_hot_words
+    set category = #{category},
+      name = #{name},
+      url = #{url},
+      search = #{search},
+      created = #{created},
+      updated = #{updated}
+    where id = #{id}
+  </update>
+</mapper>

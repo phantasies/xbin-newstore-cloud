@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.binux.mapper.TbOrderItemMapper" >
+  <resultMap id="BaseResultMap" type="cn.binux.pojo.TbOrderItem" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="item_id" property="itemId" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="BIGINT" />
+    <result column="total_fee" property="totalFee" jdbcType="BIGINT" />
+    <result column="pic_path" property="picPath" jdbcType="VARCHAR" />
+    <result column="weights" property="weights" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, item_id, order_id, num, title, price, total_fee
+    from tb_order_item
+    where id = #{id}
+  </select>
+
+  <insert id="insert" parameterType="cn.binux.pojo.TbOrderItem" >
+    insert into tb_order_item (id, item_id, order_id,
+      num, title, price, total_fee, 
+      pic_path, weights)
+    values (#{id}, #{itemId}, #{orderId}, 
+      #{num}, #{title}, #{price}, #{totalFee}, 
+      #{picPath}, #{weights})
+  </insert>
+
+  <update id="update" parameterType="cn.binux.pojo.TbOrderItem" >
+    update tb_order_item
+    set item_id = #{itemId},
+      order_id = #{orderId},
+      num = #{num},
+      title = #{title},
+      price = #{price},
+      total_fee = #{totalFee},
+      pic_path = #{picPath},
+      weights = #{weights}
+    where id = #{id}
+  </update>
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.binux.mapper.TbTransactionMessageMapper" >
+  <resultMap id="BaseResultMap" type="cn.binux.pojo.TbTransactionMessage" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="message_id" property="messageId" jdbcType="VARCHAR" />
+    <result column="message_data_type" property="messageDataType" jdbcType="VARCHAR" />
+    <result column="consumer_queue" property="consumerQueue" jdbcType="VARCHAR" />
+    <result column="message_send_times" property="messageSendTimes" jdbcType="SMALLINT" />
+    <result column="areadly_dead" property="areadlyDead" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="field1" property="field1" jdbcType="VARCHAR" />
+    <result column="field2" property="field2" jdbcType="VARCHAR" />
+    <result column="field3" property="field3" jdbcType="VARCHAR" />
+    <result column="message_body" property="messageBody" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, version, editor,
+      creater, edit_time, create_time,
+      message_id, message_data_type, consumer_queue,
+      message_send_times, areadly_dead, status,
+      remark, field1, field2,
+      field3, message_body
+    from tb_transaction_message
+    where id = #{id}
+  </select>
+
+  <insert id="insert" parameterType="cn.binux.pojo.TbTransactionMessage" >
+    insert into tb_transaction_message (id, version, editor,
+      creater, edit_time, create_time, 
+      message_id, message_data_type, consumer_queue, 
+      message_send_times, areadly_dead, status, 
+      remark, field1, field2, 
+      field3, message_body)
+    values (#{id}, #{version}, #{editor},
+      #{creater}, #{editTime}, #{createTime},
+      #{messageId}, #{messageDataType}, #{consumerQueue},
+      #{messageSendTimes,jdbcType=SMALLINT}, #{areadlyDead}, #{status},
+      #{remark}, #{field1}, #{field2},
+      #{field3}, #{messageBody})
+  </insert>
+
+  <update id="update" parameterType="cn.binux.pojo.TbTransactionMessage" >
+    update tb_transaction_message
+    set version = #{version},
+      editor = #{editor},
+      creater = #{creater},
+      edit_time = #{editTime},
+      create_time = #{createTime},
+      message_id = #{messageId},
+      message_data_type = #{messageDataType},
+      consumer_queue = #{consumerQueue},
+      message_send_times = #{messageSendTimes},
+      areadly_dead = #{areadlyDead},
+      status = #{status},
+      remark = #{remark},
+      field1 = #{field1},
+      field2 = #{field2},
+      field3 = #{field3}
+    where id = #{id}
+  </update>
+</mapper>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.binux.mapper.TbIndexSlideAdMapper" >
+  <resultMap id="BaseResultMap" type="cn.binux.pojo.TbIndexSlideAd" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="alt" property="alt" jdbcType="VARCHAR" />
+    <result column="clog" property="clog" jdbcType="VARCHAR" />
+    <result column="ext1" property="ext1" jdbcType="VARCHAR" />
+    <result column="href" property="href" jdbcType="VARCHAR" />
+    <result column="logV" property="logv" jdbcType="VARCHAR" />
+    <result column="src" property="src" jdbcType="VARCHAR" />
+    <result column="srcB" property="srcb" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="logDomain" property="logdomain" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, alt, clog,
+      ext1, href, logV, src,
+      srcB, status, sort_order,
+      logDomain, created, updated
+    from tb_index_slide_ad
+    where id = #{id}
+  </select>
+
+  <insert id="insert" parameterType="cn.binux.pojo.TbIndexSlideAd" >
+    insert into tb_index_slide_ad (id, alt, clog,
+      ext1, href, logV, src, 
+      srcB, status, sort_order, 
+      logDomain, created, updated
+      )
+    values (#{id}, #{alt}, #{clog},
+      #{ext1}, #{href}, #{logv}, #{src},
+      #{srcb}, #{status}, #{sortOrder},
+      #{logdomain}, #{created}, #{updated}
+      )
+  </insert>
+
+  <update id="update" parameterType="cn.binux.pojo.TbIndexSlideAd" >
+    update tb_index_slide_ad
+    set alt = #{alt},
+      clog = #{clog},
+      ext1 = #{ext1},
+      href = #{href},
+      logV = #{logv},
+      src = #{src},
+      srcB = #{srcb},
+      status = #{status},
+      sort_order = #{sortOrder},
+      logDomain = #{logdomain},
+      created = #{created},
+      updated = #{updated}
+    where id = #{id}
+  </update>
+</mapper>

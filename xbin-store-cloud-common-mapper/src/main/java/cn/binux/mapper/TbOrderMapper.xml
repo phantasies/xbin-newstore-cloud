@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.binux.mapper.TbOrderMapper" >
+  <resultMap id="BaseResultMap" type="cn.binux.pojo.TbOrder" >
+    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="addr_id" property="addrId" jdbcType="BIGINT" />
+    <result column="payment" property="payment" jdbcType="VARCHAR" />
+    <result column="payment_type" property="paymentType" jdbcType="INTEGER" />
+    <result column="post_fee" property="postFee" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="shipping_name" property="shippingName" jdbcType="VARCHAR" />
+    <result column="shipping_code" property="shippingCode" jdbcType="VARCHAR" />
+    <result column="no_annoyance" property="noAnnoyance" jdbcType="VARCHAR" />
+    <result column="service_price" property="servicePrice" jdbcType="VARCHAR" />
+    <result column="return_price" property="returnPrice" jdbcType="VARCHAR" />
+    <result column="total_weight" property="totalWeight" jdbcType="VARCHAR" />
+    <result column="buyer_rate" property="buyerRate" jdbcType="INTEGER" />
+    <result column="close_time" property="closeTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="payment_time" property="paymentTime" jdbcType="TIMESTAMP" />
+    <result column="consign_time" property="consignTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select order_id, user_id, addr_id,
+    payment, payment_type, post_fee,
+    status, shipping_name, shipping_code,
+    no_annoyance, service_price, return_price,
+    total_weight, buyer_rate, close_time,
+    end_time, payment_time, consign_time,
+    create_time, update_time
+    from tb_order
+    where order_id = #{orderId}
+  </select>
+
+  <insert id="insert" parameterType="cn.binux.pojo.TbOrder" >
+    insert into tb_order (order_id, user_id, addr_id,
+      payment, payment_type, post_fee, 
+      status, shipping_name, shipping_code, 
+      no_annoyance, service_price, return_price, 
+      total_weight, buyer_rate, close_time, 
+      end_time, payment_time, consign_time, 
+      create_time, update_time)
+    values (#{orderId}, #{userId}, #{addrId}, 
+      #{payment}, #{paymentType}, #{postFee}, 
+      #{status}, #{shippingName}, #{shippingCode}, 
+      #{noAnnoyance}, #{servicePrice}, #{returnPrice}, 
+      #{totalWeight}, #{buyerRate}, #{closeTime}, 
+      #{endTime}, #{paymentTime}, #{consignTime}, 
+      #{createTime}, #{updateTime})
+  </insert>
+
+  <update id="update" parameterType="cn.binux.pojo.TbOrder" >
+    update tb_order
+    set user_id = #{userId},
+      addr_id = #{addrId},
+      payment = #{payment},
+      payment_type = #{paymentType},
+      post_fee = #{postFee},
+      status = #{status},
+      shipping_name = #{shippingName},
+      shipping_code = #{shippingCode},
+      no_annoyance = #{noAnnoyance},
+      service_price = #{servicePrice},
+      return_price = #{returnPrice},
+      total_weight = #{totalWeight},
+      buyer_rate = #{buyerRate},
+      close_time = #{closeTime},
+      end_time = #{endTime},
+      payment_time = #{paymentTime},
+      consign_time = #{consignTime},
+      create_time = #{createTime},
+      update_time = #{updateTime}
+    where order_id = #{orderId}
+  </update>
+</mapper>

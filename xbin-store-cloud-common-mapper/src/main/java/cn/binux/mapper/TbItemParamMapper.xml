@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.binux.mapper.TbItemParamMapper" >
+  <resultMap id="BaseResultMap" type="cn.binux.pojo.TbItemParam" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="item_cat_id" property="itemCatId" jdbcType="BIGINT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="param_data" property="paramData" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, item_cat_id, created, updated, param_data
+    from tb_item_param
+    where id = #{id}
+  </select>
+  <insert id="insert" parameterType="cn.binux.pojo.TbItemParam" >
+    insert into tb_item_param (id, item_cat_id, created, updated, param_data)
+    values (#{id}, #{itemCatId}, #{created}, 
+      #{updated}, #{paramData})
+  </insert>
+  <update id="update" parameterType="cn.binux.pojo.TbItemParam" >
+    update tb_item_param
+    set item_cat_id = #{itemCatId},
+      created = #{created},
+      updated = #{updated}
+    where id = #{id}
+  </update>
+</mapper>

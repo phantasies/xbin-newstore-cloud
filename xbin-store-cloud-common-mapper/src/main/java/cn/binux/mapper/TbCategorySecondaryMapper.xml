@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.binux.mapper.TbCategorySecondaryMapper" >
+  <resultMap id="BaseResultMap" type="cn.binux.pojo.TbCategorySecondary" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cid" property="cid" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
+    <result column="is_parent" property="isParent" jdbcType="BIT" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, cid, parent_id,
+    name, url, status,
+    sort_order, is_parent, created,
+    updated
+    from tb_category_secondary
+    where id = #{id}
+  </select>
+
+  <select id="selectByCondition" resultMap="BaseResultMap" parameterType="java.util.HashMap">
+    select id, cid, parent_id,
+    name, url, status,
+    sort_order, is_parent, created,
+    updated
+    from tb_category_secondary
+    where 1=1
+    <if test="parentId != null">
+      and parent_id=#{parentId}
+    </if>
+  </select>
+
+  <select id="selectByNameLike" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select id, cid, parent_id,
+    name, url, status,
+    sort_order, is_parent, created,
+    updated
+    from tb_category_secondary
+    where name like #{name}
+  </select>
+
+  <insert id="insert" parameterType="cn.binux.pojo.TbCategorySecondary" >
+    <selectKey keyProperty="id" resultType="long" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into tb_category_secondary (id, cid, parent_id,
+      name, url, status, 
+      sort_order, is_parent, created, 
+      updated)
+    values (#{id}, #{cid}, #{parentId},
+      #{name}, #{url}, #{status},
+      #{sortOrder}, #{isParent,jdbcType=BIT}, #{created},
+      #{updated})
+  </insert>
+
+  <update id="update" parameterType="cn.binux.pojo.TbCategorySecondary" >
+    update tb_category_secondary
+    set cid = #{cid},
+      parent_id = #{parentId},
+      name = #{name},
+      url = #{url},
+      status = #{status},
+      sort_order = #{sortOrder},
+      is_parent = #{isParent},
+      created = #{created},
+      updated = #{updated}
+    where id = #{id}
+  </update>
+</mapper>

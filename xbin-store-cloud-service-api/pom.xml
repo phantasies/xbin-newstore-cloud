@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>xbin-store-cloud-service-api</artifactId>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>xbin-store-cloud-service-user-api</module>
+		<module>xbin-store-cloud-service-homepage-api</module>
+		<module>xbin-store-cloud-service-item-api</module>
+		<module>xbin-store-cloud-service-cart-api</module>
+		<module>xbin-store-cloud-service-order-api</module>
+		<module>xbin-store-cloud-service-search-api</module>
+		<module>xbin-store-cloud-service-notify-api</module>
+		<module>xbin-store-cloud-service-admin-api</module>
+	</modules>
+
+	<parent>
+		<groupId>cn.binux</groupId>
+		<artifactId>xbin-store-cloud-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>cn.binux</groupId>
+				<artifactId>xbin-store-cloud-common</artifactId>
+				<version>${xbin-store-cloud.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>cn.binux</groupId>
+				<artifactId>xbin-store-cloud-common-pojo</artifactId>
+				<version>${xbin-store-cloud.version}</version>
+			</dependency>
+			<!-- Spring Boot Test 依赖 -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-feign</artifactId>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>

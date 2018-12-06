@@ -130,8 +130,15 @@ mkdir -p /data/fastdfs/storage/storage0
 mkdir -p /data/fastdfs/tracker
 ```
 
+###add
+```
+部分需要自己安装的jar
+mvn install:install-file -DgroupId=org.csource -DartifactId=fastdfs-client-java -Dversion=1.27 -Dpackaging=jar -Dfile=/home/gou/Downloads/fastdfs-client-java-1.27-RELEASE.jar
+mvn install:install-file -DgroupId=cn.binux -DartifactId=spring-boot-starter-druid -Dversion=0.0.1 -Dpackaging=jar -Dfile=/home/gou/IdeaProjects/xbin-newstore-cloud/other/spring-boot-starter-druid-0.0.1.jar
+mvn install:install-file -DgroupId=cn.binux -DartifactId=spring-boot-starter-redis -Dversion=0.0.1 -Dpackaging=jar -Dfile=/home/gou/IdeaProjects/xbin-newstore-cloud/other/spring-boot-starter-redis-0.0.1.jar
 
 
 
-胖狗与飞鸟 14808540@qq.com
+
+```
 

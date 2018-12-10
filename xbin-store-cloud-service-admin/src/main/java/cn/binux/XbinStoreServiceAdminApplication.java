@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableDiscoveryClient
 @EnableHystrix
 @EnableTransactionManagement
-@Configuration
 //@EnableApolloConfig
 @MapperScan(basePackages = "cn.binux.mapper")
 public class XbinStoreServiceAdminApplication {

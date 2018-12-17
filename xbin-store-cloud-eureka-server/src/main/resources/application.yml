@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: eureka
+    name: xbin-store-cloud-eureka-server
 
 eureka:
   client:
@@ -12,4 +12,5 @@ eureka:
     serviceUrl:
       defaultZone: ${eureka.client.service-url.defaultZone}
   instance:
-    hostname: ${hostname:192.168.100.222}
+    ##当hostname 为空时,使用192.168.1.115来补充;
+    hostname: ${hostname:192.168.1.115}

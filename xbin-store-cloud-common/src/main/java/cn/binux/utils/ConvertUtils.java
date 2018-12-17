@@ -26,15 +26,17 @@ public final class ConvertUtils {
         for (i = 0; i < str.length(); i++) {
             c = str.charAt(i);
             sb.append("\\u");
-            j = (c >>> 8); //取出高8位
+            j = (c >>> 8);
             tmp = Integer.toHexString(j);
-            if (tmp.length() == 1)
+            if (tmp.length() == 1) {
                 sb.append("0");
+            }
             sb.append(tmp);
-            j = (c & 0xFF); //取出低8位
+            j = (c & 0xFF);
             tmp = Integer.toHexString(j);
-            if (tmp.length() == 1)
+            if (tmp.length() == 1) {
                 sb.append("0");
+            }
             sb.append(tmp);
 
         }

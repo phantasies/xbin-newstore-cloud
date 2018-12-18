@@ -8,11 +8,13 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * @author junyi
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableHystrix
 @EnableTransactionManagement
-//@EnableApolloConfig
 @MapperScan(basePackages = "cn.binux.mapper")
 public class XbinStoreServiceAdminApplication {
 

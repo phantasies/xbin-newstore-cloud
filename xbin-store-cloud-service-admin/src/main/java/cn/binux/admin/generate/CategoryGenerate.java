@@ -38,12 +38,12 @@ public class CategoryGenerate {
 
     @Autowired
     public void setTbCategoryImageMapper(TbCategoryImageMapper tbCategoryImageMapper) {
-        this.tbCategoryImageMapper = tbCategoryImageMapper;
+        CategoryGenerate.tbCategoryImageMapper = tbCategoryImageMapper;
     }
 
     @Autowired
     public void setTbCategorySecondaryMapper(TbCategorySecondaryMapper tbCategorySecondaryMapper) {
-        this.tbCategorySecondaryMapper = tbCategorySecondaryMapper;
+        CategoryGenerate.tbCategorySecondaryMapper = tbCategorySecondaryMapper;
     }
 
     public static void main(String[] args) {

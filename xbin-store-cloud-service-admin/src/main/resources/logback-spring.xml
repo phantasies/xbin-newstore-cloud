@@ -4,7 +4,7 @@
     <logger name="org.springframework" level="ERROR"/>
     <logger name="org.springframework.web" level="DEBUG"/>
     <logger name="org.springframework.cloud" level="DEBUG"/>
-
+    <property name="logs.dir" value="./logs/xbin-store-cloud-service-admin" />
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%t] %p %c{32} - %m%n</pattern>

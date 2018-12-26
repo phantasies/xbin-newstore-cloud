@@ -13,12 +13,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
+/**
+ * @author gou
+ */
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class})
 @EnableEurekaClient
 @EnableFeignClients
 @EnableHystrix
 @Configuration
-//@EnableApolloConfig
 public class XbinStoreWebPortalApplication {
 
 	public static void main(String[] args) {

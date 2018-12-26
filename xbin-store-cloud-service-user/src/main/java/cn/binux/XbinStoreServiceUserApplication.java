@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableHystrix
 @Configuration
-//@EnableApolloConfig
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableTransactionManagement

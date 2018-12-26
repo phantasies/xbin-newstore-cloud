@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.binux.pojo.TbItemDesc;
+import org.springframework.stereotype.Component;
 
 /**
  * @Type TbItemDescMapper.java
@@ -12,6 +13,7 @@ import cn.binux.pojo.TbItemDesc;
  * @date 2018-09-18 上午10:59:54
  * @version
  */
+@Component
 public interface TbItemDescMapper {
     int insert(TbItemDesc record);
 

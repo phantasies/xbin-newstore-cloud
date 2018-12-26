@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @create 2017-05-05
  */
 
-@Component
+@Component(value = "userServiceHystrix")
 public class UserServiceHystrix implements UserService {
 
     /**

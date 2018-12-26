@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 
@@ -23,8 +23,7 @@ import java.util.HashMap;
  */
 
 @Api(value = "API - NotifyUserServiceImpl", description = "用户通知")
-@RefreshScope
-@RestController
+@Service(value = "notifyUserServiceImpl")
 public class NotifyUserServiceImpl implements NotifyUserService {
 
     private static final Logger logger = LoggerFactory.getLogger(NotifyUserServiceImpl.class);

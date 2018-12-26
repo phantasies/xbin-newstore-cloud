@@ -6,6 +6,7 @@ import cn.binux.user.service.UserService;
 import cn.binux.utils.CookieUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -30,6 +31,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     private String CART_ORDER_INFO_PROFIX;
 
     @Autowired
+    @Qualifier(value = "userServiceHystrix")
     private UserService userService;
 
     @Override

@@ -2,6 +2,7 @@ package cn.binux;
 
 import cn.binux.utils.JedisClient;
 import cn.binux.utils.impl.JedisClientSingle;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -11,9 +12,9 @@ import org.springframework.context.annotation.Configuration;
 
 @EnableHystrix
 @Configuration
-//@EnableApolloConfig
 @SpringBootApplication
 @EnableDiscoveryClient
+@MapperScan(basePackages = "cn.binux.mapper")
 public class XbinStoreServiceNotifyApplication {
 
 	public static void main(String[] args) {

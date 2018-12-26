@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true">
     <logger name="org.springframework" level="ERROR"/>
-    <property name="logs.dir" value="./logs/eureka-server" />
+    <property name="logs.dir" value="./logs/xbin-store-cloud-eureka-server" />
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%t] %p %c{32} - %m%n</pattern>

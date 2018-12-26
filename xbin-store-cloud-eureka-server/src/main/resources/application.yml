@@ -1,16 +1,3 @@
-server:
-  port: ${server.port}
-
 spring:
-  application:
-    name: xbin-store-cloud-eureka-server
-
-eureka:
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
-      defaultZone: ${eureka.client.service-url.defaultZone}
-  instance:
-    ##当hostname 为空时,使用192.168.1.115来补充;
-    hostname: ${hostname:192.168.1.115}
+  profiles:
+    active: dev

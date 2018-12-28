@@ -37,7 +37,7 @@ mybatis:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka.xbin.store.com:8501/eureka/
+      defaultZone: http://cloud.xbin.store.com:8501/eureka/
 
 ##swagger2 conf
 swagger2:
@@ -74,4 +74,4 @@ login:
   # 推荐登录名后缀随机数取值范围
   random_number: 50000
   # 登录成功页面
-  success_url: http://eureka.xbin.store.com:8101/success
+  success_url: http://cloud.xbin.store.com:8101/success

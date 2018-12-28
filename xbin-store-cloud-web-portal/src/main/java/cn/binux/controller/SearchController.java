@@ -3,6 +3,7 @@ package cn.binux.controller;
 import java.io.UnsupportedEncodingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
@@ -22,10 +23,10 @@ import cn.binux.search.service.SearchService;
  */
 
 @Controller
-@RefreshScope
 public class SearchController {
 
     @Autowired
+    @Qualifier("searchServiceHystrix")
     private SearchService searchService;
 
     @Value("${search_result_rows}")

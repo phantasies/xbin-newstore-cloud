@@ -24,7 +24,6 @@ public class VerifyCodeUtils {
     public static final String VERIFY_CODES = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
     private static Random random = new Random();
 
-
     /**
      * 使用系统默认字符源生成验证码
      *
@@ -187,10 +186,12 @@ public class VerifyCodeUtils {
     }
 
     private static Color getRandColor(int fc, int bc) {
-        if (fc > 255)
+        if (fc > 255) {
             fc = 255;
-        if (bc > 255)
+        }
+        if (bc > 255) {
             bc = 255;
+        }
         int r = fc + random.nextInt(bc - fc);
         int g = fc + random.nextInt(bc - fc);
         int b = fc + random.nextInt(bc - fc);

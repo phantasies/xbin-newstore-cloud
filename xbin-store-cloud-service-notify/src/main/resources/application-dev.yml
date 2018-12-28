@@ -32,7 +32,7 @@ management:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka.xbin.store.com:8501/eureka/
+      defaultZone: http://cloud.xbin.store.com:8501/eureka/
 swagger2:
   package: cn.binux.notify.service
 # Redis

@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
  * @create 2017-02-22 下午9:27
  */
 
-@RefreshScope
 public class LoginInterceptor implements HandlerInterceptor {
 
     @Value("${user_login_page}")

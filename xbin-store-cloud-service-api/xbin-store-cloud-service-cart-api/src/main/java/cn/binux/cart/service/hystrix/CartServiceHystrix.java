@@ -14,7 +14,7 @@ import java.util.List;
  * @create 2017-05-04 下午11:59
  */
 
-@Component
+@Component(value = "cartServiceHystrix")
 public class CartServiceHystrix implements CartService {
 
 

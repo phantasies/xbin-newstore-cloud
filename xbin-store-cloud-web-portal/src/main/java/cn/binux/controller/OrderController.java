@@ -13,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,6 @@ import java.util.List;
  */
 
 @Controller
-@RefreshScope
 public class OrderController {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
@@ -46,12 +46,14 @@ public class OrderController {
     private String CART_ORDER_INDEX_PROFIX;
 
     @Autowired
+    @Qualifier("cartServiceHystrix")
     private CartService cartService;
 
     @Autowired
     private JedisClient jedisClient;
 
     @Autowired
+    @Qualifier("orderServiceHystrix")
     private OrderService orderService;
 
 

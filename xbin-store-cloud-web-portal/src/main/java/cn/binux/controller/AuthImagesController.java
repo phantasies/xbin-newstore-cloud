@@ -28,7 +28,6 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value = "API - AuthImagesController", description = "验证码 Controller")
 @Controller
-@RefreshScope
 public class AuthImagesController {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthImagesController.class);
@@ -50,16 +49,12 @@ public class AuthImagesController {
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
         response.setContentType("image/jpeg");
-
         //生成随机字串
         String verifyCode = VerifyCodeUtils.generateVerifyCode(4);
         //存入Redis
-
         String key = VERIFYCODE + uid;
         jedisClient.set(key, verifyCode);
-
         jedisClient.expire(key, EXPIRE_TIME);
-
         //生成图片
         int w = 100, h = 30;
         try {

@@ -10,7 +10,7 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://eureka.xbin.store.com:8501/eureka/
+      defaultZone: http://cloud.xbin.store.com:8501/eureka/
   instance:
     ##当hostname 为空时,使用192.168.1.115来补充;
     hostname: ${hostname:192.168.1.170}

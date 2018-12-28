@@ -37,7 +37,7 @@ mybatis:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka.xbin.store.com:8501/eureka/
+      defaultZone: http://cloud.xbin.store.com:8501/eureka/
 
 ##swagger2 conf
 swagger2:

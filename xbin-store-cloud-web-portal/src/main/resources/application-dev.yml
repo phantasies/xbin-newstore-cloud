@@ -11,8 +11,8 @@ spring:
   mvc:
     view:
       suffix: .html
-  resources:
-    static-locations: file:.\resource\static
+  #resources:
+  #  static-locations: file:.\resource\static
 security:
   basic:
     enabled: false

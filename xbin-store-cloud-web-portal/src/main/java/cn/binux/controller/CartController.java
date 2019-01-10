@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
@@ -37,12 +38,12 @@ import io.swagger.annotations.Api;
 
 @Api(value = "API - CartController", description = "购物车 Controller")
 @Controller
-@RefreshScope
 public class CartController {
 
     private static final Logger logger = LoggerFactory.getLogger(CartController.class);
 
     @Autowired
+    @Qualifier("cartServiceHystrix")
     private CartService cartService;
 
     @Autowired

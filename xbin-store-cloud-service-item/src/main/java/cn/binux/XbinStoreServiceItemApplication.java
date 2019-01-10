@@ -11,11 +11,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * @author gou
+ */
 @EnableHystrix
 @Configuration
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableApolloConfig
 @EnableTransactionManagement
 @MapperScan(basePackages = "cn.binux.mapper")
 public class XbinStoreServiceItemApplication {

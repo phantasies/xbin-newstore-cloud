@@ -5,8 +5,10 @@ import cn.binux.mapper.TbIndexSlideAdMapper;
 import cn.binux.pojo.TbIndexSlideAd;
 import cn.binux.utils.FastDFSClientUtils;
 import cn.binux.utils.FastJsonConvert;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -20,7 +22,7 @@ import java.util.Map;
 
 /**
  * json格式Category转成Java格式
- *
+ * 边缘广告--导入 ;
  * @author xubin.
  * @create 2017-02-14 下午7:59
  */
@@ -33,9 +35,13 @@ public class BigADGenerate {
 
     @Autowired
     public void setTbIndexSlideAdMapper(TbIndexSlideAdMapper tbIndexSlideAdMapper) {
-        this.tbIndexSlideAdMapper = tbIndexSlideAdMapper;
+        BigADGenerate.tbIndexSlideAdMapper = tbIndexSlideAdMapper;
     }
 
+    /**
+     * 读取BigAD.json文件;
+     * @param args
+     */
     public static void main(String[] args) {
 
         SpringApplication.run(BigADGenerate.class, args);
@@ -66,7 +72,7 @@ public class BigADGenerate {
                 }
             }
         }
-        String logdomain = "//192.168.100.222:8101/log?info=";
+        String logdomain = "//192.168.1.115:8101/log?info=";
         Map map = FastJsonConvert.convertJSONToObject(txtContent.toString(), Map.class);
 
         List data = (List) map.get("data");

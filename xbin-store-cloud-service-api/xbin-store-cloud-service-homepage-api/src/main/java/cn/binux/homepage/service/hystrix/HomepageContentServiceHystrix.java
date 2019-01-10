@@ -13,7 +13,7 @@ import java.util.List;
  * @create 2017-05-04
  */
 
-@Component
+@Component(value = "homepageContentServiceHystrix")
 public class HomepageContentServiceHystrix implements HomepageContentService {
 
     @Override

@@ -2,9 +2,9 @@
 <configuration scan="true">
 
     <logger name="org.springframework" level="ERROR"/>
-    <logger name="org.springframework.web" level="DEBUG"/>
-    <logger name="org.springframework.cloud" level="DEBUG"/>
-
+    <logger name="org.springframework.web" level="INFO"/>
+    <logger name="org.springframework.cloud" level="INFO"/>
+    <property name="logs.dir" value="./logs/xbin-store-cloud-service-cart"/>
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%t] %p %c{32} - %m%n</pattern>
@@ -35,7 +35,7 @@
     </appender>
 
     <logger name="cn.binux" level="DEBUG" additivity="false">
-        <appender-ref ref="APP-LOG-FILE" />
+        <appender-ref ref="APP-LOG-FILE"/>
     </logger>
 
     <root level="INFO">

@@ -2,7 +2,6 @@ package cn.binux.search.listener;
 
 
 import cn.binux.search.mapper.SearchMapper;
-import org.apache.solr.client.solrj.SolrClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,8 @@ public class ItemAddListener {
     @Autowired
     private SearchMapper searchMapper;
 
-    @Autowired
-    private SolrClient solrClient;
+   /* @Autowired
+    private SolrClient solrClient;*/
 
     //public void onMessage(Message message) {
     //

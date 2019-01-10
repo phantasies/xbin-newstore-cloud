@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -26,10 +27,7 @@ import java.util.List;
  * @create 2017-02-22 下午12:51
  */
 
-//@Transactional
-@Api(value = "API - CartServiceImpl", description = "购物车操作")
-@RestController
-@RefreshScope
+@Service
 public class CartServiceImpl implements CartService {
 
     private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
@@ -50,16 +48,6 @@ public class CartServiceImpl implements CartService {
     private TbItemMapper itemMapper;
 
     @Override
-    @ApiOperation("购物车添加商品")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "pid", value = "", required = true, dataType = "Long"),
-        @ApiImplicitParam(name = "pcount", value = "", required = true, dataType = "Long"),
-        @ApiImplicitParam(name = "uuid", value = "", required = true, dataType = "Long"), })
-    @ApiResponses({ @ApiResponse(code = 200, message = "Successful — 请求已完成"),
-        @ApiResponse(code = 400, message = "请求中有语法问题，或不能满足请求"),
-        @ApiResponse(code = 401, message = "未授权客户机访问数据"),
-        @ApiResponse(code = 404, message = "服务器找不到给定的资源；文档不存在"),
-        @ApiResponse(code = 500, message = "服务器不能完成请求") })
     public XbinResult addCart(Long pid, Integer pcount, String uuid) {
 
         String key = CART_INFO_PROFIX + uuid;
@@ -158,13 +146,6 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    @ApiOperation("获取商品信息")
-    @ApiImplicitParams({ @ApiImplicitParam(name = "cookieUUID", value = "", required = true, dataType = "Long"), })
-    @ApiResponses({ @ApiResponse(code = 200, message = "Successful — 请求已完成"),
-        @ApiResponse(code = 400, message = "请求中有语法问题，或不能满足请求"),
-        @ApiResponse(code = 401, message = "未授权客户机访问数据"),
-        @ApiResponse(code = 404, message = "服务器找不到给定的资源；文档不存在"),
-        @ApiResponse(code = 500, message = "服务器不能完成请求") })
     public List<CartInfo> getCartInfoListByCookiesId(String cookieUUID) {
 
         String cartInfoString = jedisClient.get(CART_INFO_PROFIX + cookieUUID);
@@ -190,18 +171,6 @@ public class CartServiceImpl implements CartService {
      * @return
      */
     @Override
-    @ApiOperation("获取商品信息")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "pid", value = "", required = true, dataType = "Long"),
-        @ApiImplicitParam(name = "pcount", value = "", required = true, dataType = "Integer"),
-        @ApiImplicitParam(name = "type", value = "", required = true, dataType = "Integer"),
-        @ApiImplicitParam(name = "index", value = "", required = true, dataType = "Integer"),
-        @ApiImplicitParam(name = "cookieUUID", value = "", required = true, dataType = "String"), })
-    @ApiResponses({ @ApiResponse(code = 200, message = "Successful — 请求已完成"),
-        @ApiResponse(code = 400, message = "请求中有语法问题，或不能满足请求"),
-        @ApiResponse(code = 401, message = "未授权客户机访问数据"),
-        @ApiResponse(code = 404, message = "服务器找不到给定的资源；文档不存在"),
-        @ApiResponse(code = 500, message = "服务器不能完成请求") })
     public XbinResult decreOrIncre(Long pid, Integer pcount, Integer type, Integer index,
                                    String cookieUUID) {
 

@@ -50,11 +50,6 @@
             <name>Aliyun Nexus repository</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
-        <repository>
-            <id>local</id>
-            <name>Nexus repository</name>
-            <url>http://localhost:8077/nexus/content/groups/public/</url>
-        </repository>
     </repositories>
 
     <properties>
@@ -103,7 +98,6 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 

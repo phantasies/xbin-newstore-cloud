@@ -11,9 +11,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * @author gou
+ */
 @EnableHystrix
 @Configuration
-//@EnableApolloConfig
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableTransactionManagement

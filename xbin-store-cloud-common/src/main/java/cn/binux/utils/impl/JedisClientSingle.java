@@ -14,13 +14,18 @@ import redis.clients.jedis.JedisPool;
  */
 public class JedisClientSingle implements JedisClient {
 
-    @Autowired
-    private JedisPool jedisPool;
 
-    @Value("${redis.password}")
+    @Value("${spring.redis.host}")
+    private String host;
+
+    @Value("${spring.redis.port}")
+    private Integer port;
+
+    @Value("${spring.redis.password}")
     private String password;
 
     private Jedis getResource() {
+        JedisPool jedisPool = new JedisPool(host, port);
         Jedis resource = jedisPool.getResource();
         if (StringUtils.isBlank(password)) {
             return resource;

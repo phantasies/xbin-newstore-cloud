@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @create 2017-05-05 下午12:35
  */
 
-@Component
+@Component(value = "notifyUserServiceHystrix")
 public class NotifyUserServiceHystrix implements NotifyUserService {
 
     @Override

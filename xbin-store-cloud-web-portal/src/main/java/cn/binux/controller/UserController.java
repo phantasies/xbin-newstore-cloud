@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
@@ -34,13 +35,14 @@ import io.swagger.annotations.Api;
 
 @Api(value = "API - UserController", description = "用户 Controller")
 @Controller
-@RefreshScope
 public class UserController {
 
     @Autowired
+    @Qualifier("userServiceHystrix")
     private UserService userService;
 
     @Autowired
+    @Qualifier("notifyUserServiceHystrix")
     private NotifyUserService notifyUserService;
 
     @Value("${user_not_exist}")
@@ -53,7 +55,7 @@ public class UserController {
     private String HOMEPAGE_PATH;
 
 
-    @RequestMapping(value = "/register",method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String showRegister(Model model, String returnUrl) {
 
         model.addAttribute("uid", UUID.randomUUID().toString());
@@ -61,7 +63,7 @@ public class UserController {
         return "user/register";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLogin(Model model, String returnUrl) {
 
         model.addAttribute("returnUrl", returnUrl);
@@ -70,7 +72,7 @@ public class UserController {
         return "user/login";
     }
 
-    @RequestMapping(value = "/success",method = RequestMethod.GET)
+    @RequestMapping(value = "/success", method = RequestMethod.GET)
     public String showSuccess(String username, Model model) {
 
         model.addAttribute("username", username);
@@ -79,7 +81,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/login", method = RequestMethod.POST)
-    public @ResponseBody String login(TbUser user, String returnUrl, HttpServletResponse response, HttpServletRequest request) {
+    public @ResponseBody
+    String login(TbUser user, String returnUrl, HttpServletResponse response, HttpServletRequest request) {
 
         XbinResult result = userService.login(user);
 
@@ -108,47 +111,54 @@ public class UserController {
     }
 
     @RequestMapping(value = "/loginservice")
-    public @ResponseBody String valida(String callback, String method, Integer uid) {
+    public @ResponseBody
+    String valida(String callback, String method, Integer uid) {
         return callback + "({\"Identity\":{\"Unick\":\"\",\"Name\":\"\",\"IsAuthenticated\":false}})";
     }
 
     /**
      * 验证用户名、邮箱、电话是否重复
+     *
      * @param isEngaged 检测的名称
-     * @param regName 用户名
-     * @param email 邮箱
-     * @param phone 电话
+     * @param regName   用户名
+     * @param email     邮箱
+     * @param phone     电话
      * @return
      */
     @RequestMapping("/validateuser/{isEngaged}")
-    public @ResponseBody String validateUser(
-            @PathVariable("isEngaged")          String isEngaged,
-            @RequestParam(defaultValue = "")    String regName,
-            @RequestParam(defaultValue = "")    String email,
-            @RequestParam(defaultValue = "")    String phone) {
+    public @ResponseBody
+    String validateUser(
+            @PathVariable("isEngaged") String isEngaged,
+            @RequestParam(defaultValue = "") String regName,
+            @RequestParam(defaultValue = "") String email,
+            @RequestParam(defaultValue = "") String phone) {
 
         return userService.validateUser(isEngaged, regName, email, phone);
     }
 
     /**
      * 验证码判断
+     *
      * @param authCode 判断验证码是否正确
      * @param uuid
      * @return
      */
     @RequestMapping("/validate/validateAuthCode")
-    public @ResponseBody String validateUser(String authCode, String uuid) {
+    public @ResponseBody
+    String validateUser(String authCode, String uuid) {
         return userService.validateAuthCode(authCode, uuid);
     }
 
     /**
      * 发送手机验证码
+     *
      * @param mobile 电话号码
      * @return
      */
     //http://192.168.100.222:8101/notifyuser/mobileCode?state=&mobile=%2B008615669970074&_=1486641954248
     @RequestMapping("/notifyuser/mobileCode")
-    public @ResponseBody String mobileCode(String mobile) {
+    public @ResponseBody
+    String mobileCode(String mobile) {
         return notifyUserService.mobileNotify(mobile);
     }
 
@@ -156,40 +166,40 @@ public class UserController {
      * 请求格式 POST
      * 注册 不使用邮箱注册
      *
-     * @param regName       注册名
-     * @param pwd           第一次密码
-     * @param pwdRepeat     第二次密码
-     * @param phone         电话
-     * @param mobileCode    手机验证码
-     * @param authCode      输入的验证码
-     * @param uuid          Redis验证码uuid
+     * @param regName    注册名
+     * @param pwd        第一次密码
+     * @param pwdRepeat  第二次密码
+     * @param phone      电话
+     * @param mobileCode 手机验证码
+     * @param authCode   输入的验证码
+     * @param uuid       Redis验证码uuid
      * @return
      */
     @RequestMapping("/register/regService")
-    public @ResponseBody String regService(String regName, String pwd, String pwdRepeat, String phone, String mobileCode, String authCode, String uuid) {
-        return userService.register(regName, pwd, pwdRepeat, phone, mobileCode, uuid,authCode, "");
+    public @ResponseBody
+    String regService(String regName, String pwd, String pwdRepeat, String phone, String mobileCode, String authCode, String uuid) {
+        return userService.register(regName, pwd, pwdRepeat, phone, mobileCode, uuid, authCode, "");
     }
+
     /**
      * 请求格式 POST
      * 注册 使用邮箱注册
      *
-     * @param regName       注册名
-     * @param pwd           第一次密码
-     * @param pwdRepeat     第二次密码
-     * @param phone         电话
-     * @param mobileCode    手机验证码
-     * @param email         邮箱
-     * @param authCode      输入的验证码
-     * @param uuid          Redis验证码uuid
+     * @param regName    注册名
+     * @param pwd        第一次密码
+     * @param pwdRepeat  第二次密码
+     * @param phone      电话
+     * @param mobileCode 手机验证码
+     * @param email      邮箱
+     * @param authCode   输入的验证码
+     * @param uuid       Redis验证码uuid
      * @return
      */
     @RequestMapping("/register/sendRegEmail")
-    public @ResponseBody String sendRegEmail(String regName, String pwdRepeat, String pwd, String phone, String mobileCode, String uuid, String authCode, String email) {
+    public @ResponseBody
+    String sendRegEmail(String regName, String pwdRepeat, String pwd, String phone, String mobileCode, String uuid, String authCode, String email) {
         return userService.register(regName, pwd, pwdRepeat, phone, mobileCode, uuid, authCode, email);
     }
-
-
-
 
 
 }

@@ -1,0 +1,65 @@
+server:
+  port: 8514
+spring:
+  application:
+    name: xbin-store-cloud-service-item
+  datasource:
+          type: com.zaxxer.hikari.HikariDataSource
+          driver-class-name: com.mysql.jdbc.Driver
+          platform: mysql
+          url: jdbc:mysql://154.8.147.101:3306/shop_demo?characterEncoding=utf-8
+          username: guest
+          password: mysql@2018!
+          hikari:
+             connectionTimeout: 30000
+             idleTimeout: 600000
+             maximumPoolSize: 60
+             minimumIdle: 10
+  redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
+
+security:
+  basic:
+    enabled: false
+
+management:
+  security:
+    enabled: false
+
+##mybatis
+mybatis:
+    type-aliases-package: cn.binux.pojo
+    mapper-locations: classpath:mapper/*.xml
+
+##eureka conf
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://cloud.xbin.store.com:8501/eureka/
+
+##swagger2 conf
+swagger2:
+  package: cn.binux.item.listener
+
+##pageHelper conf
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+# Redis
+redisKey:
+  # 缓存时间 默认半小时
+  expire_time: 1800
+  prefix:
+    item_info_profix: 'ITEM_INFO:'
+  suffix:
+    item_info_base_suffix: ':BASE'
+    item_info_desc_suffix: ':DESC'
+
+
+# 静态页面生成目录
+static_html_path: D:\Program Files\openresty\html\shopdemo\resource\static\item

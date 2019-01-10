@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.binux.pojo.TbCategory;
+import org.springframework.stereotype.Component;
 
 /**
  * @Type TbCategoryMapper.java
@@ -12,6 +13,7 @@ import cn.binux.pojo.TbCategory;
  * @date 2018-09-18 上午10:59:54
  * @version
  */
+@Component
 public interface TbCategoryMapper {
     int insert(TbCategory record);
 
